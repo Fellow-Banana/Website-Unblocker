@@ -5,74 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Unblocker</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; background-color: #111; color: #eee; }
-        input { padding: 10px; width: 80%; max-width: 400px; margin-bottom: 10px; }
-        button { padding: 10px 20px; cursor: pointer; }
-        iframe { width: 100%; height: 90vh; border: none; }
-        .disclaimer, .how-it-works, .usage, .limitations { font-size: 14px; margin-top: 20px; color: #ccc; text-align: left; }
-        .option-buttons { margin-top: 20px; }
-        textarea { width: 80%; max-width: 400px; height: 100px; margin-top: 20px; padding: 10px; color: #333; background-color: #fff; border: 1px solid #ccc; }
+        /* ... (All the CSS styles from the previous example go here) */
     </style>
 </head>
 <body>
-    <h1>Website Unblocker</h1>
-    
-    <input type="text" id="urlInput" placeholder="Enter website URL" value="example.com">
-    <button onclick="unblockSite()">Unblock</button>
-
-    <div class="option-buttons">
-        <button onclick="generateDataUrl()">Generate URL</button>
+    <div id="header">
+        <a href="https://github.com/Fellow-Banana" target="_blank">
+            <img id="github-logo" src="github-mark.png" alt="GitHub Logo">
+        </a>
+    </div>
+    <div id="container">
+        <div id="input-area">
+            <input type="text" id="url-input" placeholder="Enter website URL">
+        </div>
+        <div id="buttons-area">
+            <button id="unblock-button">Unblock</button>
+            <button id="generate-data-url-button">Generate Data URL</button>
+        </div>
+        <div id="iframe-container">
+            <iframe id="website-iframe"></iframe>
+        </div>
+        <div id="data-url-area">
+            <textarea id="data-url-output" readonly placeholder="Data URL will appear here"></textarea>
+        </div>
+        <div id="disclaimer">
+            <strong>Disclaimer:</strong> This tool will not work on all websites. Some sites have security settings (such as <code>X-Frame-Options: DENY</code> or <code>Content-Security-Policy</code> restrictions) that prevent them from being embedded inside an iframe. Some browsers (especially mobile ones) might have additional restrictions. This tool uses iframes to display websites. This is not a perfect solution and some websites may not display correctly or at all.
+        </div>
+        <div id="footer">
+            Created by <a href="https://github.com/Fellow-Banana" target="_blank">Fellow-Banana</a>
+        </div>
     </div>
 
-    <!-- Textbox for displaying the generated URL -->
-    <textarea id="dataUrlOutput" readonly placeholder="Generated URL will appear here..."></textarea>
-    
-    <div class="disclaimer">
-        <strong>Disclaimer:</strong> This tool may not work for all websites. Some sites implement security measures (like X-Frame-Options: DENY or Content-Security-Policy) to prevent their content from being embedded within iframes. Please keep this in mind when using the tool.
-    </div>
-
-    <div class="how-it-works">
-        <h3>How It Works</h3>
-        <p>This project creates a Blob URL that contains an iframe, allowing users to attempt embedding websites that do not explicitly block this method. Here’s the process:</p>
-        <ul>
-            <li>Enter a website URL into the input field.</li>
-            <li>A Blob is generated containing an HTML page with an <code>&lt;iframe&gt;</code> pointing to the provided URL.</li>
-            <li>A Blob URL is created and opened in a new tab, displaying the website inside an iframe.</li>
-        </ul>
-    </div>
-
-    <div class="usage">
-        <h3>Usage</h3>
-        <p>To use this tool:</p>
-        <ul>
-            <li>Enter a website URL in the input field (e.g., <code>https://example.com</code> or <code>example.com</code>).</li>
-            <li>Click the "Unblock" button to open the site inside a new Blob-based tab.</li>
-        </ul>
-    </div>
-
-    <div class="limitations">
-        <h3>Limitations</h3>
-        <ul>
-            <li>Websites with <code>X-Frame-Options: DENY</code> cannot be embedded.</li>
-            <li>Sites with strict <code>Content-Security-Policy</code> rules may also block this method.</li>
-            <li>Some browsers, especially mobile ones, may have additional restrictions.</li>
-        </ul>
-    </div>
-
-    <script>
-        function unblockSite() {
-            let site = document.getElementById('urlInput').value;
-            let blob = new Blob([`<html><body style='margin:0;padding:0;'><iframe src='${site}' width='100%' height='100%' style='border:none;'></iframe></body></html>`], { type: 'text/html' });
-            let url = URL.createObjectURL(blob);
-            window.open(url, '_blank');
-        }
-
-        function generateDataUrl() {
-            let site = document.getElementById('urlInput').value;
-            if (!site.startsWith('http://') && !site.startsWith('https://')) {
-                site = 'https://' + site;
-            }
-        }
-    </script>
-</body>
+    <script src="script.js"></script> </body>
 </html>

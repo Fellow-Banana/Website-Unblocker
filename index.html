@@ -5,7 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Unblocker</title>
     <style>
-        /* ... (All the CSS styles from the previous example go here) */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #181818;
+            color: #e0e0e0;
+            font-family: sans-serif;
+        }
+
+        #header {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        #github-logo {
+            width: 50px;
+            height: auto;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            padding-top: 0;
+        }
+
+        #input-area {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        #url-input {
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #282828;
+            color: #e0e0e0;
+            width: 400px;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        #buttons-area {
+            display: flex;
+        }
+
+        #unblock-button, #generate-data-url-button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #unblock-button:hover, #generate-data-url-button:hover {
+            background-color: #357ae8;
+        }
+
+        #iframe-container {
+            border: none;
+            width: 100%;
+            height: 0;
+        }
+
+        #website-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
+
+        #data-url-area {
+            margin-top: 20px;
+            width: 80%;
+        }
+
+        #data-url-output {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #282828;
+            color: #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            overflow-wrap: break-word;
+        }
+
+        #disclaimer {
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+            color: #999;
+            padding: 0 20px;
+            line-height: 1.5;
+            max-width: 600px;
+        }
+
+        #footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        #footer a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+
+        #footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -36,5 +156,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script> </body>
+    <script src="script.js"></script>
+</body>
 </html>

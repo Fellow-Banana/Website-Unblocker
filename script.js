@@ -11,7 +11,11 @@ function unblockWebsite(url) {
         } else {
           validatedUrl = url;
         }
-        window.open(validatedUrl, '_blank'); // Open in new tab
+
+        const blob = new Blob([`<html><body style='margin:0;padding:0;'><iframe src='${validatedUrl}' width='100%' height='100%' style='border:none;'></iframe></body></html>`], { type: 'text/html' });
+        const blobUrl = URL.createObjectURL(blob);
+        window.open(blobUrl, '_blank'); // Open the blob URL in a new tab
+
     } catch (error) {
         console.error("Error unblocking website:", error);
         alert("Invalid URL or unable to load website.");

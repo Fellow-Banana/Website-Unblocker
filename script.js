@@ -1,8 +1,6 @@
 const urlInput = document.getElementById('url-input');
 const unblockButton = document.getElementById('unblock-button');
 const generateDataURLButton = document.getElementById('generate-data-url-button');
-const websiteIframe = document.getElementById('website-iframe');
-const iframeContainer = document.getElementById('iframe-container');
 const dataURLOutput = document.getElementById('data-url-output');
 
 function unblockWebsite(url) {
@@ -13,11 +11,7 @@ function unblockWebsite(url) {
         } else {
           validatedUrl = url;
         }
-
-        websiteIframe.src = validatedUrl;
-        websiteIframe.style.display = "block";
-        iframeContainer.style.display = "block";
-
+        window.open(validatedUrl, '_blank'); // Open in new tab
     } catch (error) {
         console.error("Error unblocking website:", error);
         alert("Invalid URL or unable to load website.");
